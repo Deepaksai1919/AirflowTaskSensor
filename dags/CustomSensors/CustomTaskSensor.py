@@ -33,6 +33,8 @@ class CustomExternalTaskSensor(ExternalTaskSensor):
             Here we wanted to check for the dag run where execution_date >= dttm_filter[0] and execution_date <= dttm_filter[1].
             The values of the dttm_filter are returned by the execution_date_fn argument of the Sensor.
             TI is the class sqlalchemy.orm.attributes.InstrumentedAttribute and hence it's mentods can be utilized as per the requirement
+
+            TODO: Pass the filter conditions dynamically to the sensor and build the query based on the arguments.
         """
         TI = TaskInstance
         DR = DagRun
