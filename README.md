@@ -21,7 +21,7 @@ execution_date_fn = lambda dt: [datetime.fromisoformat('2021-10-14T00:00:00 +00:
 ```
 A list of two timestamps are passed in the example so the dependent_dag monitors the run of main_dag in the interval `2021-10-14T00:00:00 +00:00` and `2021-10-14T03:00:00 +00:00`. These values can be passed dynamically using the macros and timedelta.
 
-The arguments passed will be converted in an sql query which will be equivalent to
+The arguments passed will be converted by `sqlalchemy` into an sql query which will be equivalent to
 
 ```SQL
 SELECT count(*) AS count_1
@@ -31,6 +31,9 @@ AND task_instance.task_id = 'hello_world'
 AND task_instance.execution_date >= '2021-10-14T00:00:00 +00:00' 
 AND task_instance.execution_date <= '2021-10-14T03:00:00 +00:00'
 ```
+
+##### The documentation of the sqlalchemy Query api can be found at
+https://docs.sqlalchemy.org/en/14/orm/query.html
 
 Other column values can also be used as per the requirement.
 
